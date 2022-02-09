@@ -22,7 +22,7 @@ users = []
 io.on('connection', (socket) => {
   console.log('Connected ')
   
-  socket.emit('welcome', 'Welcome to Socket Programming : ' + socket.id)
+  socket.emit('welcome', 'Welcome to Room ' + socket.id)
   //console.log(socket)
 
   //Custom message event to socket
@@ -137,7 +137,7 @@ app.post('/login', async (req, res) => {
 
 //http://localhost:3000/
 app.get('/', async (req, res) => {
-  res.sendFile(__dirname + '/html/index.html')
+  res.sendFile(__dirname + '/html/signup.html')
 });
 app.post('/', async (req, res) => {
   const username=req.body.username

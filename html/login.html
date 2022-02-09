@@ -128,6 +128,8 @@
 </head>
 <body  onload="checkForErr()">
 
+  <h1>🔥HotChat App welcomes you back2
+  </h1>
     
     <div class="loginFrm">
         <form action="/" method="post" class="form" >
@@ -155,10 +157,10 @@
       function checkForErr(){
         var objUrlParams = new URLSearchParams(window.location.search);
         if(objUrlParams.get('wrong')=="uname"){
-          document.getElementById('err').innerHTML="Username is Incorrect!"
+          document.getElementById('err').innerHTML="Incorrect username"
         }
         else if(objUrlParams.get('wrong')=="pass"){
-          document.getElementById('err').innerHTML="Password is incorrect!"
+          document.getElementById('err').innerHTML="Incorrect password!"
 
         }
       }

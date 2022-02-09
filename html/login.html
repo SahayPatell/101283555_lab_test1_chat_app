@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>🔥Log in</title>
+
   <link rel="stylesheet" href="../css/login.css">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
@@ -27,9 +32,7 @@
     .form {
         background-color: white;
         width: 400px;
-        border-radius: 8px;
         padding: 20px 40px;
-        box-shadow: 0 10px 25px rgba(40, 123, 195, 0.726);
     }
       
     .title {
@@ -50,11 +53,11 @@
         left: 0px;
         height: 100%;
         width: 100%;
-        border: 1px solid rgba(72, 73, 75, 0.726);
-        border-radius: 7px;
         font-size: 16px;
         padding: 0 20px;
-        outline: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
         background: none;
         z-index: 1;
       }
@@ -82,8 +85,8 @@
         margin-left: auto;
         padding: 15px 30px;
         border: none;
-        background-color: rgba(0, 23, 233, 0.664);
-        color: white;
+        background-color: transparent;
+        color: rgb(0, 0, 0);
         border-radius: 50px;
         cursor: pointer;
         font-size: 16px;
@@ -91,8 +94,9 @@
     }
       
     .submitBtn:hover {
-        background-color: #50d338;
+        background-color: #000000;
         transform: translateY(-2px);
+        color: white;
     }
 
     .input:focus + .label {
@@ -101,12 +105,9 @@
         z-index: 10;
         font-size: 14px;
         font-weight: 600;
-        color: rgba(0, 23, 233, 0.664);
+        color: rgba(0, 0, 0, 0.664);
     }
 
-    .input:focus {
-        border: 2px solid rgba(0, 23, 233, 0.664);
-    }
 
     .input:not(:placeholder-shown)+ .label {
         top: -7px;
@@ -115,6 +116,7 @@
         font-size: 14px;
         font-weight: 600;
     }
+
 
     h1{
         text-align: center;
@@ -128,7 +130,7 @@
 </head>
 <body  onload="checkForErr()">
 
-  <h1>🔥HotChat App welcomes you back2
+  <h1>🔥HotChat App Welcomes You Back !
   </h1>
     
     <div class="loginFrm">

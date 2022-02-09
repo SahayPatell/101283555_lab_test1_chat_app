@@ -17,39 +17,47 @@
       font-family: "lato", sans-serif;
     }
 
+    .mainDiv{
+      display: flex;
+      margin: 50px;
+      padding: 10px 10px;
+    }
+
     .Btn {
         display: block;
         margin-left: auto;
-        margin-right: auto;
+        margin-right: 10px;
+        width: 300px;
+        height: 300px;
         padding: 15px 30px;
         border: none;
-        background-color: rgba(0, 23, 233, 0.664);
+        background-color: rgb(7, 84, 129);
         color: white;
-        border-radius: 50px;
+        border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
         margin-top: 30px;
     }
       
     .signout{
-        margin: 15% auto 0%;
+        margin: 10% auto 0%;
         padding: 10px 20px;
         border: none;
         background-color: rgb(255, 255, 255);
-        color: rgb(255, 0, 0);
-        border-radius: 50px;
+        color: rgb(7, 84, 129);
+        border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
     }
 
     .signout:hover{
         color: rgb(255, 255, 255);
-        background-color: #ff0000;
+        background-color: rgb(7, 84, 129);
         transform: translateY(-2px);
     }
 
     .Btn:hover {
-        background-color: #1bd84a;
+        background-color: rgb(5, 52, 80);
         transform: translateY(-2px);
     }
 
@@ -68,8 +76,8 @@
   </style>
 </head>
 <body onload="showErr()">
-    <h1>🔥HotChat Rooms</h1>
-    <hr>
+    <h1>🔥Select Any HotChat Room</h1>
+
     <div class="mainDiv">
 
           <div>
@@ -82,13 +90,6 @@
           
           <div>
             <button type="submit" class="Btn" onclick="myFunction('nodeJs')">NodeJs</button>
-          </div>
-          <div id="personal">
-            <form method="post" action="/chat">
-              <input type="text" name="username" id="username" placeholder="Enter Username">
-              <button type="submit" class="Btn" onclick="myFunction('covid')">Chat</button>
-            </form>
-            
           </div>
 
     </div>

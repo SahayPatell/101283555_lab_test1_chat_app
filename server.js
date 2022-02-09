@@ -23,7 +23,6 @@ io.on('connection', (socket) => {
   console.log('Connected ')
   
   socket.emit('welcome', 'Welcome to Room ' + socket.id)
-  //console.log(socket)
 
   //Custom message event to socket
   socket.on('message', (data) => {
@@ -49,16 +48,6 @@ io.on('connection', (socket) => {
           }
         }
       }
-      //These will send to current/sending client
-      //socket.emit('newMessage', data)
-
-      //These will send to all connected client
-      //io.sockets.emit('newMessage', data)
-
-      //this send to the sender and the client
-      //io.to(roomName).emit('newMessage', data)
-      
-
   })
 
   //Get User name
@@ -101,11 +90,11 @@ app.use(express.json()); // Make sure it comes back as json
 mongoose.connect('mongodb+srv://Sahay:admin123@cluster0.med58.mongodb.net/chatApp?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(success => {
-  console.log('Success Mongodb connection')
-}).catch(err => {
-  console.log('Error Mongodb connection')
-});
+  }).then(success => {
+    console.log('Mongdb connected')
+  }).catch(err => {
+    console.log('Mongodb connection Error')
+  });
 
 //http://localhost:3000/signup
 app.get('/signup', async (req, res) => {
@@ -137,7 +126,7 @@ app.post('/login', async (req, res) => {
 
 //http://localhost:3000/
 app.get('/', async (req, res) => {
-  res.sendFile(__dirname + '/html/signup.html')
+  res.sendFile(__dirname + '/html/index.html')
 });
 app.post('/', async (req, res) => {
   const username=req.body.username
@@ -186,10 +175,11 @@ app.post('/chat',async(req,res)=>{
   else{
     return res.redirect('/?err=noUser')
   }
-  
+
 
 
 })
+
 
 http.listen(PORT, () => {
   console.log(`Server started at ${PORT}`)

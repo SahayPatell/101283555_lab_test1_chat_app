@@ -98,7 +98,7 @@ app.use(
 app.use(express.json()); // Make sure it comes back as json
 
 //TODO - Replace you Connection String here
-mongoose.connect('mongodb+srv://gbc:pruthvi@sa.dubue.mongodb.net/db_f2021_comp3123?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://Sahay:admin123@cluster0.med58.mongodb.net/chatApp?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(success => {

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>🔥Log in</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+    /* Get rid of all default margins/paddings. Set typeface */
+    body {
+    text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      font-family: "lato", sans-serif;
+    }
+
+    .Btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px 30px;
+        border: none;
+        background-color: rgba(0, 23, 233, 0.664);
+        color: white;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+      
+    .signout{
+        margin: 15% auto 0%;
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        color: rgb(255, 0, 0);
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .signout:hover{
+        color: rgb(255, 255, 255);
+        background-color: #ff0000;
+        transform: translateY(-2px);
+    }
+
+    .Btn:hover {
+        background-color: #1bd84a;
+        transform: translateY(-2px);
+    }
+
+    .mainDiv{
+        max-width: auto;
+        text-align: center;
+    }
+
+    h1{
+        text-align: center;
+    }
+    #personal{
+      display: flex;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+<body onload="showErr()">
+    <h1>🔥HotChat Rooms</h1>
+    <hr>
+    <div class="mainDiv">
+
+          <div>
+            <button type="submit" class="Btn" onclick="myFunction('news')">News</button>
+          </div>
+
+          <div>
+            <button type="submit" class="Btn" onclick="myFunction('covid')">Covid - 19</button>
+          </div>
+          
+          <div>
+            <button type="submit" class="Btn" onclick="myFunction('nodeJs')">NodeJs</button>
+          </div>
+          <div id="personal">
+            <form method="post" action="/chat">
+              <input type="text" name="username" id="username" placeholder="Enter Username">
+              <button type="submit" class="Btn" onclick="myFunction('covid')">Chat</button>
+            </form>
+            
+          </div>
+
+    </div>
+    <button type="submit" class="signout" onclick="close()">Log out</button>
+
+</body>
+
+<script>
+
+
+      function setUsername(){
+          var objUrlParams = new URLSearchParams(window.location.search);
+          client.emit('newUser', objUrlParams.get("uname"))
+      }
+      function myFunction(room) {
+          window.location.href="../chat/"+room;
+      }
+      function close(){
+        window.location.href="/";
+      }
+      function showErr(){
+        var objUrlParams = new URLSearchParams(window.location.search);
+        if(objUrlParams.get('err')=="noUser"){
+          alert("No User Found!")
+        }
+        setUsername()
+      }
+
+ </script>
+
+</html>

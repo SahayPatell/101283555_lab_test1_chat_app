@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+  
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +23,7 @@
       margin: 0;
       padding: 0;
       background-color: white;
-      font-family: "lato", sans-serif;
+      font-family: "Roboto Slab", "Open Sans", "Lato", "Playfair Display";
     }
     .loginFrm {
         display: flex;
@@ -121,47 +124,61 @@
     h1{
         text-align: center;
     }
-    #err{
-      color: red;
-      position: absolute;
-      padding: 15px;
-    }
+
   </style>
+
 </head>
+
 <body  onload="OnWrongInitials()">
 
-  <h1>🔥HotChat App Welcomes You Back !
-  </h1>
+  <h1>🔥HotChat App Welcomes You Back !</h1>
     
     <div class="loginFrm">
+
         <form action="/" method="post" class="form" >
+
           <h1 class="title">Log in</h1>
     
           <div class="inputContainer">
+
             <input type="text" class="input" autocomplete="off" placeholder="Username" name="username" required>
             <label class="label">User Name</label>
+
           </div>
     
           <div class="inputContainer">
+
             <input type="password" class="input" autocomplete="off" placeholder="password" name="password" required>
             <label class="label">Password</label>
+
           </div>
     
           <p>Don't have an account? <a href="/signup">click here</a></p>
+
           <div id="errorMessage" style="color: red;"></div>
+
           <button type="submit" class="submitBtn">Log in</button>
+
         </form>
+
       </div>
 
 </body>
 
 <script>
+
       function OnWrongInitials(){
+
         var url = new URLSearchParams(window.location.search);
+
         if(url.get('wrong')=="uname" || url.get('wrong')=="pass"){
+
           document.getElementById('errorMessage').innerHTML="Incorrect username or password"
+
         }
+
       }
+
  </script>
 
 </html>

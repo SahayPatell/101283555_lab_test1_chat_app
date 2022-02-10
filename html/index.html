@@ -21,6 +21,7 @@
       display: flex;
       margin: 50px;
       padding: 10px 10px;
+      text-align: center;
     }
 
     .Btn {
@@ -40,7 +41,7 @@
     }
       
     .signout{
-        margin: 10% auto 0%;
+        margin: 5% auto 1%;
         padding: 10px 20px;
         border: none;
         background-color: rgb(255, 255, 255);
@@ -48,6 +49,7 @@
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
+
     }
 
     .signout:hover{
@@ -92,8 +94,12 @@
             <button type="submit" class="Btn" onclick="myFunction('nodeJs')">NodeJs</button>
           </div>
 
+          <div>
+            <button type="submit" class="Btn" > More Rooms Coming Soon</button>
+          </div>
+
     </div>
-    <button type="submit" class="signout" onclick="close()">Log out</button>
+    <button type="submit" class="signout" onclick="logout()">Log out</button>
 
 </body>
 
@@ -107,8 +113,8 @@
       function myFunction(room) {
           window.location.href="../chat/"+room;
       }
-      function close(){
-        window.location.href="/";
+      function logout(){
+        window.location.href="/signup";
       }
       function showErr(){
         var objUrlParams = new URLSearchParams(window.location.search);

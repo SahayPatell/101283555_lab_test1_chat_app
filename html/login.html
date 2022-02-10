@@ -128,7 +128,7 @@
     }
   </style>
 </head>
-<body  onload="checkForErr()">
+<body  onload="OnWrongInitials()">
 
   <h1>🔥HotChat App Welcomes You Back !
   </h1>
@@ -138,17 +138,17 @@
           <h1 class="title">Log in</h1>
     
           <div class="inputContainer">
-            <input type="text" class="input" placeholder="Username" name="username" required>
+            <input type="text" class="input" autocomplete="off" placeholder="Username" name="username" required>
             <label class="label">User Name</label>
           </div>
     
           <div class="inputContainer">
-            <input type="password" class="input" placeholder="password" name="password" required>
+            <input type="password" class="input" autocomplete="off" placeholder="password" name="password" required>
             <label class="label">Password</label>
           </div>
     
           <p>Don't have an account? <a href="/signup">click here</a></p>
-          <div id="err"></div>
+          <div id="errorMessage" style="color: red;"></div>
           <button type="submit" class="submitBtn">Log in</button>
         </form>
       </div>
@@ -156,14 +156,10 @@
 </body>
 
 <script>
-      function checkForErr(){
-        var objUrlParams = new URLSearchParams(window.location.search);
-        if(objUrlParams.get('wrong')=="uname"){
-          document.getElementById('err').innerHTML="Incorrect username"
-        }
-        else if(objUrlParams.get('wrong')=="pass"){
-          document.getElementById('err').innerHTML="Incorrect password!"
-
+      function OnWrongInitials(){
+        var url = new URLSearchParams(window.location.search);
+        if(url.get('wrong')=="uname" || url.get('wrong')=="pass"){
+          document.getElementById('errorMessage').innerHTML="Incorrect username or password"
         }
       }
  </script>

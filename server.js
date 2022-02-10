@@ -22,7 +22,7 @@ users = []
 io.on('connection', (socket) => {
   console.log('Connected ')
   
-  socket.emit('welcome', 'Welcome to Room ' + socket.id)
+  socket.emit('welcome', 'Welcome to Room -> ' + socket.id)
 
   //Custom message event to socket
   socket.on('message', (data) => {
@@ -66,6 +66,11 @@ io.on('connection', (socket) => {
       const msg = gmModel.find({room: room}).sort({'date_sent': 'desc'}).limit(10);
       socket.msg=msg
   })
+
+  socket.on("userTyping", (data) => {
+    socket.broadcast.to(data.room).emit("showChatUI", data.username);
+  });
+  
   socket.on('leaveRoom', () =>{
       socket.leave(socket.currentRoom);
       socket.currentRoom = null;

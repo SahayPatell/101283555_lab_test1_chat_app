@@ -128,7 +128,7 @@
 
 </head>
 
-<body onload="checkErr()">
+<body onload="OnWrongUsername()">
 
     <h1>Welcome to 🔥HotChat App</h1>
 
@@ -163,7 +163,7 @@
           <br>
           <p>Already have an account? <a href="/login">click here</a></p>
 
-          <div id="err"></div>
+          <div id="errorMessage"></div>
 
           <input type="submit" class="submitBtn" value="Submit">
 
@@ -174,12 +174,12 @@
 </body>
 
 <script>
-      function checkErr(){
+      function OnWrongUsername(){
 
-        var objUrlParams = new URLSearchParams(window.location.search);
+        var url = new URLSearchParams(window.location.search);
 
-        if(objUrlParams.get('err')=="username"){
-          document.getElementById('err').innerHTML="Username is Invalid!"
+        if(url.get('errorMessage')=="username"){
+          document.getElementById('errorMessage').innerHTML="Username is Invalid!"
         }
 
       }

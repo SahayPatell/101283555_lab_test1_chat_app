@@ -1,140 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>🔥Chat </title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-            html{
-                margin: 0;
-                padding: 0;
-            }
-            body {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-                background-color: white;
-                font-family: "lato", sans-serif;
-                height: 100%;
-                width: 100%;
-                position: absolute;
-            }
-            input{
-                font-size: 20px;
-                padding: 10px 15px;
-                border-radius: 50px;
-                width: 80%;
-                bottom: 15px;
-                left: 15px;
-            }
-            button{
-                min-width: 100px;
-            }
-            .Btn {
-                left: 89%;
-                right: 10px;
-                bottom: 15px;
-                width: 10%;
-                min-width: min-content;
-                font-size: 22px; 
-                padding: 10px 15px;
-                border-radius: 50px;
-                border: none;
-                background-color: lightseagreen;
-                color: azure;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>🔥Chat </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: "lato", sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        input {
+
+            font-size: 20px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            width: 80%;
+            bottom: 15px;
+            left: 15px;
+        }
+
+        button {
+            min-width: 100px;
+        }
+
+        .Btn {
+            left: 89%;
+            right: 10px;
+            bottom: 15px;
+            width: 10%;
+            font-size: 22px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            border-color:rgb(7, 84, 129) ;
+            background-color: rgb(255, 255, 255);
+            color: rgb(7, 84, 129);
+        }
+
+        .Btn:hover {
+            background-color: rgb(7, 84, 129);;
+            color: white;
+            border-radius: 15px;
+        }
+
+        #room {
+            padding: 0px 30px;
+            background-color: rgb(7, 84, 129);;
+            display: flex
+        }
+
+        i {
+            align-items: center;
+            margin: auto 0;
+            color: white;
+        }
+
+        h1 {
+            margin: 20px;
+            color: white;
+        }
+
+        #in {
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            bottom: 2px;
+        }
+
+        #message-container {
+            width: 93%;
+            margin: auto;
             
-            .Btn:hover {
-                background-color: seagreen;
-            }
-            #room{
-                padding: 0px 30px;
-                background-color: lightseagreen;
-                display: flex
-            }
-            i{
-                align-items: center;
-                margin: auto 0;
-            }
-            h1{
-                margin: 20px;
-            }
-            #in{
-                padding: 20px;
-                display: flex;
-                justify-content: space-around;
-            }
-            #message-container{
-                width: 93%;
-                margin: auto;
-                
-            }
-            #message-container>div{
-                padding: 10px 15px;
-                margin: 15px 0px;
-                border-radius: 50px;
-                background-color: lightseagreen;
-                border-radius: 20px;
-                width: max-content;
-            }
-        </style>
-    </head>
-    <body onload="joinRoom()">
-        <div id = "error-container"></div>
-        <div id="room" onclick="leaveRoom()">
-            <i class="fa fa-arrow-left" style="font-size:36px"></i>
-            
-            <h1 id="roomName"><b></b></h1>
-        </div>
-        <div id="in">
-            <input type="text" id="message" name="message" placeholder="Type here">
-                
-            <button class="Btn" type="button" name="button" onclick="sendMessage()">Send</button>
-        </div>
-        <div id="message-container">
-        </div>
-    </body>
-    <script src = "/socket.io/socket.io.js"></script>
-    <script>
-        const client = io()
-        //client.emit('message',{name : 'Sahay'})
-        var mc=document.getElementById('message-container')
-
-        client.on('welcome', (data) =>{
-            console.log(data)
-            mc.innerHTML += '<div>' + data + '</div>'
-        })
-
-        client.on('newMessage', (message) =>{
-            var temp=mc.innerHTML;
-            mc.innerHTML='<div>' + message + '</div>'
-            mc.innerHTML+=temp
-        })
-        
-        function getRoom(){
-            let arr=window.location.href.split('/');
-            return arr[arr.length-1]
-        }
-        function joinRoom(){
-            client.emit('joinroom', getRoom())
-            document.getElementById("roomName").innerHTML=getRoom()
         }
 
-        function sendMessage(){
-            client.emit('message', 
-            { room: getRoom(),
-                message: document.getElementById('message').value})
+        #message-container>div {
+            padding: 10px 15px;
+            margin: 15px 0px;
+            border-radius: 15px;
+            background-color: rgb(7, 84, 129);
+            color: white;
+            width: max-content;
         }
+    </style>
+</head>
 
-        function leaveRoom() {
-            client.emit('leaveRoom')
-            window.location.href="/";
-        }
+<body onload="joinRoom()">
+    <div id="error-container"></div>
+    <div id="room" onclick="leaveRoom()">
+        <i class="fa fa-arrow-left" style="font-size:25px"></i>
 
-    </script>
+        <h1 id="roomName"><b></b></h1>
+    </div>
+    <div id="in">
+        <input type="text" id="message" name="message" placeholder="Type here" oninput="userTyping()">
+
+        <button class="Btn" type="button" name="button" onclick="sendMessage()">Send</button>
+    </div>
+    <div id="cui">
+
+    </div>
+    <div id="message-container">
+    </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const client = io()
+    //client.emit('message',{name : 'Sahay'})
+    var mc = document.getElementById('message-container')
+
+    client.on('welcome', (data) => {
+        console.log(data)
+        mc.innerHTML += '<div>' + data + '</div>'
+    })
+
+    client.on('newMessage', (message) => {
+        var temp = mc.innerHTML;
+        mc.innerHTML = '<div>' + message + '</div>'
+        mc.innerHTML += temp
+    })
+
+    function getRoom() {
+        let arr = window.location.href.split('/');
+        return arr[arr.length - 1]
+    }
+    function joinRoom() {
+        client.emit('joinroom', getRoom())
+        document.getElementById("roomName").innerHTML = getRoom()
+    }
+
+    function sendMessage() {
+        client.emit('message',
+            {
+                room: getRoom(),
+                message: document.getElementById('message').value
+            })
+    }
+
+    function leaveRoom() {
+        client.emit('leaveRoom')
+        window.location.href = "/";
+    }
+
+    client.on("showChatUI", (username) => {
+        document.getElementById("cui").innerHTML = `${username} is typing...`;
+    });
+
+    function userTyping() {
+        user = client.id;
+        client.emit("userTyping", {
+            username: user,
+            room: getRoom(),
+        });
+        document.getElementById("cui").innerHTML = `<p>${user} is typing...</p>`;
+    }
+
+</script>
 
 </html>

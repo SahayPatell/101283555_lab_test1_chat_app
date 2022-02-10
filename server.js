@@ -7,6 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const uModel = require(__dirname + '/models/User');
 const groupModel = require(__dirname + '/models/GroupMessage');
+const privateModel = require(__dirname + '/models/PrivateMessage');
 
 const io = require('socket.io')(http)
 
@@ -26,9 +27,7 @@ io.on('connection', (socket) => {
 
           io.emit('newMessage', socket.id + ' : ' + data.message)
 
-      }
-      
-      else{
+      }else{
         
         io.to(data.room).emit('newMessage', socket.id +' : ' + data.message)
 
@@ -39,6 +38,22 @@ io.on('connection', (socket) => {
           try {
 
             gm.save();
+
+          } catch (err) {
+
+            console.log(err);
+
+          }
+
+        }
+
+        else{
+
+          const pm= new privateModel({from_user:socket.id,to_user:room,message:data.message})
+
+          try {
+
+            pm.save();
 
           } catch (err) {
 
@@ -82,7 +97,7 @@ io.on('connection', (socket) => {
 
   socket.on("userTyping", (data) => {
 
-    socket.broadcast.to(data.room).emit("chatUI", data.username);
+    socket.broadcast.to(data.room).emit("showChatUI", data.username);
 
   });
   
@@ -123,11 +138,11 @@ mongoose.connect('mongodb+srv://Sahay:admin123@cluster0.med58.mongodb.net/chatAp
 
   useUnifiedTopology: true
 
-  }).then(() => {
+  }).then(success => {
 
     console.log('Mongdb connected')
 
-  }).catch(() => {
+  }).catch(err => {
 
     console.log('Mongodb connection Error')
 
@@ -229,6 +244,7 @@ app.get('/chat/:room', async (req, res) => {
 
   const room = req.params.room
 
+  const msg = await groupModel.find({room: room}).sort({'date_sent': 'desc'}).limit(10);
 
   let temp="qwerty"
 
@@ -263,6 +279,6 @@ app.post('/chat',async(req,res)=>{
 http.listen(PORT, () => {
 
   console.log(`Server started at ${PORT}`)
-
+  
 })
 

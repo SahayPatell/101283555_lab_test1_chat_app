@@ -141,9 +141,9 @@
 <script>
 
     const client = io()
-
+    
     //client.emit('message',{name : 'Sahay'})
-
+    
     var msgCont = document.getElementById('message-container')
 
     client.on('welcome', (data) => {
@@ -201,9 +201,9 @@
 
     }
 
-    client.on("chatUI", (username) => {
+    client.on("showChatUI", (username) => {
 
-        document.getElementById("chtui").innerHTML = `${username} is typing...`;
+        document.getElementById("cui").innerHTML = `${username} is typing...`;
 
     });
 
@@ -219,7 +219,7 @@
 
         });
 
-        document.getElementById("chtui").innerHTML = `<p>${user} is typing...</p>`;
+        document.getElementById("cui").innerHTML = `<p>${user} is typing...</p>`;
     }
 
 </script>

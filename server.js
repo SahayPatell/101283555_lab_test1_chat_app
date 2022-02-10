@@ -123,11 +123,11 @@ mongoose.connect('mongodb+srv://Sahay:admin123@cluster0.med58.mongodb.net/chatAp
 
   useUnifiedTopology: true
 
-  }).then(success => {
+  }).then(() => {
 
     console.log('Mongdb connected')
 
-  }).catch(err => {
+  }).catch(() => {
 
     console.log('Mongodb connection Error')
 
@@ -229,7 +229,6 @@ app.get('/chat/:room', async (req, res) => {
 
   const room = req.params.room
 
-  const msg = await groupModel.find({room: room}).sort({'date_sent': 'desc'}).limit(10);
 
   let temp="qwerty"
 

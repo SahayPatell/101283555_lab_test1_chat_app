@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>🔥Log in</title>
+
   <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
     /* Get rid of all default margins/paddings. Set typeface */
@@ -75,55 +83,75 @@
       display: flex;
       justify-content: space-around;
     }
+
   </style>
+
 </head>
+
 <body onload="showErr()">
+
     <h1>🔥Select Any HotChat Room</h1>
 
     <div class="mainDiv">
 
           <div>
+
             <button type="submit" class="Btn" onclick="myFunction('news')">News</button>
+
           </div>
 
           <div>
+
             <button type="submit" class="Btn" onclick="myFunction('covid')">Covid - 19</button>
+
           </div>
           
           <div>
+
             <button type="submit" class="Btn" onclick="myFunction('nodeJs')">NodeJs</button>
+
           </div>
 
           <div>
+
             <button type="submit" class="Btn" > More Rooms Coming Soon</button>
+
           </div>
 
     </div>
+
     <button type="submit" class="signout" onclick="logout()">Log out</button>
 
 </body>
 
 <script>
+  function setUsername(){
 
+    var objUrlParams = new URLSearchParams(window.location.search);
 
-      function setUsername(){
-          var objUrlParams = new URLSearchParams(window.location.search);
-          client.emit('newUser', objUrlParams.get("uname"))
-      }
-      function myFunction(room) {
-          window.location.href="../chat/"+room;
-      }
-      function logout(){
-        window.location.href="/signup";
-      }
-      function showErr(){
-        var objUrlParams = new URLSearchParams(window.location.search);
+    client.emit('newUser', objUrlParams.get("uname"))
+
+  }
+
+  function myFunction(room) {
+
+    window.location.href="../chat/"+room;
+
+  }
+
+  function logout(){
+
+    window.location.href="/signup";
+
+  }
+      
+  function showErr(){
+    var objUrlParams = new URLSearchParams(window.location.search);
         if(objUrlParams.get('err')=="noUser"){
           alert("No User Found!")
         }
-        setUsername()
-      }
-
+    setUsername()    
+  }
  </script>
 
 </html>

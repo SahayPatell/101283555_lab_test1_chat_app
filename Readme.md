@@ -2,8 +2,7 @@
 
 ## Made a chat app using nodejs, socket, mongo db, express for college project 
 
-# This app consist of a perfect login/signup page that stores the information in a database with authentication check. and consist of featurea like rrom chat, personal chat and 
-# also have the feature which show if the other person in the room is typing or not.In short a full chat app with database storage.
+# This app consist of a perfect login/signup page that stores the information in a database with authentication check and consist of features like room chat, personal chat and also have the feature which show if the other person in the room is typing or not.In short a full web chat app with database storage. Hope you enjoy it
 
 Attention use http://localhost:3000/signup as your starting link to the App
 
